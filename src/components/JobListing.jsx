@@ -1,25 +1,29 @@
 import React, { useState } from "react";
 import { data } from "../data";
 
-const JobListing = () => {
-  const [selectedFilters, setSelectedFilters] = useState([]);
-  const [filteredItems, setFilteredItems] = useState(data);
 
+const JobListing = () => {
+  const [selectedFilters, setSelectedFilters] = useState([]); // Track selected filters
+  const [filteredItems, setFilteredItems] = useState(data); // Track filtered job listings
+
+  // Add or remove a filter when a filter option is clicked
   const toggleFilter = (filter) => {
     if (selectedFilters.includes(filter)) {
-      setSelectedFilters(selectedFilters.filter((item) => item !== filter));
+      setSelectedFilters(selectedFilters.filter((item) => item !== filter)); // Remove filter
     } else {
-      setSelectedFilters([...selectedFilters, filter]);
+      setSelectedFilters([...selectedFilters, filter]); // Add new filter
     }
   };
 
+  // Clear all filters
   const clearFilters = () => {
     setSelectedFilters([]);
   };
 
+  // Update job listings based on filters
   React.useEffect(() => {
     if (selectedFilters.length === 0) {
-      setFilteredItems(data);
+      setFilteredItems(data); // Show all jobs if no filters are selected
     } else {
       const updatedJobs = data.filter((job) =>
         selectedFilters.every(
@@ -39,128 +43,131 @@ const JobListing = () => {
   }, [selectedFilters]);
 
   return (
-    <div className="p-4  min-h-screen">
-      <div></div>
-      <div className="bg-LightGrayishCyan">
-        {selectedFilters.length > 0 && (
-          <div className="flex flex-wrap items-center gap-2 mb-4 p-2 bg-white shadow-lg rounded">
-            {selectedFilters.map((filter, index) => (
-              <div
-                key={index}
-                className="bg-filterGrayishCyan text-DesaturatedDarkCyan font-semibold px-4 py-2 rounded-lg flex items-center space-x-2"
-              >
-                <span>{filter}</span>
-                <button
-                  className="bg-DesaturatedDarkCyan text-white w-6 font-semibold"
-                  onClick={() => toggleFilter(filter)}
-                >
-                  X
-                </button>
-              </div>
-            ))}
-            <button
-              className="text-DesaturatedDarkCyan font-semibold"
-              onClick={clearFilters}
-            >
-              Clear All Filters
-            </button>
-          </div>
-        )}
-
-        {filteredItems.length > 0 ? (
-          filteredItems.map((job) => (
+    <div
+      className="relative bg-LightGrayishCyan min-h-screen"
+      style={{ backgroundImage: `url('/')`, backgroundSize: 'cover' }}
+    >
+      {/* Display selected filters */}
+      {selectedFilters.length > 0 && (
+        <div className="flex flex-wrap items-center gap-2 mb-4 p-2 bg-white shadow-lg rounded">
+          {selectedFilters.map((filter, index) => (
             <div
-              className="bg-white p-4 rounded-lg shadow-lg mb-6"
-              key={job.id}
+              key={index}
+              className="bg-filterGrayishCyan text-DesaturatedDarkCyan font-semibold px-4 py-2 rounded-lg flex items-center space-x-2"
             >
-              <div className="flex items-center mb-4">
-                <img
-                  src={job.logo}
-                  alt={job.company}
-                  className="w-12 h-12 mr-4"
-                />
-                <div className="flex-1">
-                  <div className="flex items-center mb-2">
-                    <h3 className="text-lg font-bold text-DesaturatedDarkCyan">
-                      {job.company}
-                    </h3>
-                    {job.new && (
-                      <span className="bg-teal-500 text-white text-xs font-bold px-2 py-1 ml-2 rounded-full">
-                        NEW!
-                      </span>
-                    )}
-                    {job.featured && (
-                      <span className="bg-gray-800 text-white text-xs font-bold px-2 py-1 ml-2 rounded-full">
-                        FEATURED
-                      </span>
-                    )}
-                  </div>
-                  <h4 className="text-gray-700 font-semibold">
-                    {job.position}
-                  </h4>
-                  <div className="text-gray-500 text-sm">
-                    <span>{job.postedAt}</span> • <span>{job.contract}</span> •{" "}
-                    <span>{job.location}</span>
-                  </div>
+              <span>{filter}</span>
+              <button
+                className="bg-DesaturatedDarkCyan text-white font-bold rounded-full px-2 py-1"
+                onClick={() => toggleFilter(filter)}
+              >
+                X
+              </button>
+            </div>
+          ))}
+          
+        </div>
+      )}
+
+      {/* Display job listings */}
+      {filteredItems.length > 0 ? (
+        filteredItems.map((job) => (
+          <div
+            className="bg-white p-4 rounded-lg shadow-lg mb-6 relative"
+            key={job.id}
+          >
+            {/* Left Cyan Bar */}
+            <div className="absolute left-0 top-0 bottom-0 w-2 bg-DesaturatedDarkCyan"></div>
+
+            {/* Job header */}
+            <div className="flex items-center mb-4">
+              <img
+                src={job.logo}
+                alt={job.company}
+                className="w-12 h-12 rounded-full border-2 border-gray-300"
+              />
+              <div className="flex-1">
+                <div className="flex items-center mb-2">
+                  <h3 className="text-lg font-bold text-DesaturatedDarkCyan">
+                    {job.company}
+                  </h3>
+                  {job.new && (
+                    <span className="bg-teal-500 text-white text-xs font-bold px-2 py-1 ml-2 rounded-full">
+                      NEW!
+                    </span>
+                  )}
+                  {job.featured && (
+                    <span className="bg-gray-800 text-white text-xs font-bold px-2 py-1 ml-2 rounded-full">
+                      FEATURED
+                    </span>
+                  )}
+                </div>
+                <h4 className="text-gray-700 font-semibold">{job.position}</h4>
+                <div className="text-gray-500 text-sm">
+                  <span>{job.postedAt}</span> • <span>{job.contract}</span> •{" "}
+                  <span>{job.location}</span>
                 </div>
               </div>
-
-              <div className="flex flex-wrap items-center gap-2 mt-4">
-                <span
-                  className={`cursor-pointer ${
-                    selectedFilters.includes(job.role)
-                      ? "bg-DesaturatedDarkCyan text-white"
-                      : "bg-teal-200 text-teal-800"
-                  } px-4 py-2 rounded-full`}
-                  onClick={() => toggleFilter(job.role)}
-                >
-                  {job.role}
-                </span>
-                <span
-                  className={`cursor-pointer ${
-                    selectedFilters.includes(job.level)
-                      ? "bg-DesaturatedDarkCyan text-white"
-                      : "bg-teal-200 text-teal-800"
-                  } px-4 py-2 rounded-full`}
-                  onClick={() => toggleFilter(job.level)}
-                >
-                  {job.level}
-                </span>
-                {job.languages.map((language, index) => (
-                  <span
-                    key={index}
-                    className={`cursor-pointer ${
-                      selectedFilters.includes(language)
-                        ? "bg-DesaturatedDarkCyan text-white"
-                        : "bg-teal-200 text-teal-800"
-                    } px-4 py-2 rounded-full`}
-                    onClick={() => toggleFilter(language)}
-                  >
-                    {language}
-                  </span>
-                ))}
-                {job.tools.map((tool, index) => (
-                  <span
-                    key={index}
-                    className={`cursor-pointer ${
-                      selectedFilters.includes(tool)
-                        ? "bg-DesaturatedDarkCyan text-white"
-                        : "bg-teal-200 text-teal-800"
-                    } px-4 py-2 rounded-full`}
-                    onClick={() => toggleFilter(tool)}
-                  >
-                    {tool}
-                  </span>
-                ))}
-              </div>
             </div>
-          ))
-        ) : (
-          <p className="text-center text-gray-500">
-            No jobs found matching the criteria.
-          </p>
-        )}
-      </div>
+
+            {/* Gray Demarcation Line */}
+            <div className="border-b-2 border-gray-300 my-4"></div>
+
+            {/* Job role, level, and skills - clickable filters */}
+            <div className="flex flex-wrap items-center gap-2 mt-4">
+              <span
+                className={`cursor-pointer ${
+                  selectedFilters.includes(job.role)
+                    ? "bg-DesaturatedDarkCyan text-white"
+                    : "bg-teal-200 text-teal-800"
+                } px-4 py-2 rounded-full`}
+                onClick={() => toggleFilter(job.role)}
+              >
+                {job.role}
+              </span>
+              <span
+                className={`cursor-pointer ${
+                  selectedFilters.includes(job.level)
+                    ? "bg-DesaturatedDarkCyan text-white"
+                    : "bg-teal-200 text-teal-800"
+                } px-4 py-2 rounded-full`}
+                onClick={() => toggleFilter(job.level)}
+              >
+                {job.level}
+              </span>
+              {job.languages.map((language, index) => (
+                <span
+                  key={index}
+                  className={`cursor-pointer ${
+                    selectedFilters.includes(language)
+                      ? "bg-DesaturatedDarkCyan text-white"
+                      : "bg-teal-200 text-teal-800"
+                  } px-4 py-2 rounded-full`}
+                  onClick={() => toggleFilter(language)}
+                >
+                  {language}
+                </span>
+              ))}
+              {job.tools.map((tool, index) => (
+                <span
+                  key={index}
+                  className={`cursor-pointer ${
+                    selectedFilters.includes(tool)
+                      ? "bg-DesaturatedDarkCyan text-white"
+                      : "bg-teal-200 text-teal-800"
+                  } px-4 py-2 rounded-full`}
+                  onClick={() => toggleFilter(tool)}
+                >
+                  {tool}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))
+      ) : (
+        <p className="text-center text-gray-500">
+          No jobs found matching the criteria.
+        </p>
+      )}
     </div>
   );
 };
