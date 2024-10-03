@@ -1,4 +1,4 @@
-import logo1 from "./assets/images/Photosnap.svg"
+import logo1 from "./assets/images/photosnap.svg"
 import logo2 from "./assets/images/manage.svg"
 import logo3 from "./assets/images/account.svg"
 import logo4 from "./assets/images/myhome.svg"
