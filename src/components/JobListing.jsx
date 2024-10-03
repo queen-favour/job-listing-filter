@@ -53,7 +53,7 @@ const JobListing = () => {
           {selectedFilters.map((filter, index) => (
             <div
               key={index}
-              className="bg-filterGrayishCyan text-DesaturatedDarkCyan font-semibold px-4 py-2 rounded-lg flex items-center space-x-2"
+              className="flex bg-filterGrayishCyan text-DesaturatedDarkCyan font-semibold px-4 py-2 rounded-lg flex items-center space-x-2"
             >
               <span>{filter}</span>
               <button
@@ -64,7 +64,12 @@ const JobListing = () => {
               </button>
             </div>
           ))}
-          
+          <button
+            className="text-DesaturatedDarkCyan font-semibold"
+            onClick={clearFilters}
+          >
+            Clear
+          </button>
         </div>
       )}
 
