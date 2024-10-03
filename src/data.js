@@ -1,4 +1,14 @@
-import logo1 from "./assets/images/Photosnap"
+import logo1 from "./assets/images/Photosnap.svg"
+import logo2 from "./assets/images/manage.svg"
+import logo3 from "./assets/images/account.svg"
+import logo4 from "./assets/images/myhome.svg"
+import logo5 from "./assets/images/loop-studios.svg"
+import logo6 from "./assets/images/loop-studios.svg"
+import logo7 from "./assets/images/shortly.svg"
+import logo8 from "./assets/images/insure.svg"
+import logo9 from "./assets/images/eyecam-co.svg"
+import logo10 from "./assets/images/the-air-filter-company.svg"
+
 
 export const data =[
   {
@@ -19,7 +29,7 @@ export const data =[
   {
     "id": 2,
     "company": "Manage",
-    "logo": "./images/manage.svg",
+    "logo": logo2,
     "new": true,
     "featured": true,
     "position": "Fullstack Developer",
@@ -34,7 +44,7 @@ export const data =[
   {
     "id": 3,
     "company": "Account",
-    "logo": "./images/account.svg",
+    "logo": logo3,
     "new": true,
     "featured": false,
     "position": "Junior Frontend Developer",
@@ -49,7 +59,7 @@ export const data =[
   {
     "id": 4,
     "company": "MyHome",
-    "logo": "./images/myhome.svg",
+    "logo": logo4,
     "new": false,
     "featured": false,
     "position": "Junior Frontend Developer",
@@ -64,7 +74,7 @@ export const data =[
   {
     "id": 5,
     "company": "Loop Studios",
-    "logo": "./images/loop-studios.svg",
+    "logo": logo5,
     "new": false,
     "featured": false,
     "position": "Software Engineer",
@@ -79,7 +89,7 @@ export const data =[
   {
     "id": 6,
     "company": "FaceIt",
-    "logo": "./images/faceit.svg",
+    "logo": logo6,
     "new": false,
     "featured": false,
     "position": "Junior Backend Developer",
@@ -94,7 +104,7 @@ export const data =[
   {
     "id": 7,
     "company": "Shortly",
-    "logo": "./images/shortly.svg",
+    "logo": logo7,
     "new": false,
     "featured": false,
     "position": "Junior Developer",
@@ -109,7 +119,7 @@ export const data =[
   {
     "id": 8,
     "company": "Insure",
-    "logo": "./images/insure.svg",
+    "logo": logo8,
     "new": false,
     "featured": false,
     "position": "Junior Frontend Developer",
@@ -124,7 +134,7 @@ export const data =[
   {
     "id": 9,
     "company": "Eyecam Co.",
-    "logo": "./images/eyecam-co.svg",
+    "logo": logo9,
     "new": false,
     "featured": false,
     "position": "Full Stack Engineer",
@@ -139,7 +149,7 @@ export const data =[
   {
     "id": 10,
     "company": "The Air Filter Company",
-    "logo": "./images/the-air-filter-company.svg",
+    "logo": logo10,
     "new": false,
     "featured": false,
     "position": "Front-end Dev",
