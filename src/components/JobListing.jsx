@@ -2,27 +2,24 @@ import React, { useState } from "react";
 import { data } from "../data";
 
 const JobListing = () => {
-  const [selectedFilters, setSelectedFilters] = useState([]); // Track selected filters
-  const [filteredItems, setFilteredItems] = useState(data); // Track filtered job listings
+  const [selectedFilters, setSelectedFilters] = useState([]);
+  const [filteredItems, setFilteredItems] = useState(data); 
 
-  // Add or remove a filter when a filter option is clicked
   const toggleFilter = (filter) => {
     if (selectedFilters.includes(filter)) {
-      setSelectedFilters(selectedFilters.filter((item) => item !== filter)); // Remove filter
+      setSelectedFilters(selectedFilters.filter((item) => item !== filter)); 
     } else {
-      setSelectedFilters([...selectedFilters, filter]); // Add new filter
+      setSelectedFilters([...selectedFilters, filter]); 
     }
   };
 
-  // Clear all filters
   const clearFilters = () => {
     setSelectedFilters([]);
   };
 
-  // Update job listings based on filters
   React.useEffect(() => {
     if (selectedFilters.length === 0) {
-      setFilteredItems(data); // Show all jobs if no filters are selected
+      setFilteredItems(data); 
     } else {
       const updatedJobs = data.filter((job) =>
         selectedFilters.every(
@@ -47,7 +44,7 @@ const JobListing = () => {
 
       <div ></div>
       <div className="bg-LightGrayishCyan">
-          {/* Display selected filters */}
+      
       {selectedFilters.length > 0 && (
         <div className="flex flex-wrap items-center gap-2 mb-4 p-2 bg-white shadow-lg rounded">
           {selectedFilters.map((filter, index) => (
@@ -73,7 +70,6 @@ const JobListing = () => {
         </div>
       )}
 
-      {/* Display job listings */}
       {filteredItems.length > 0 ? (
         filteredItems.map((job) => (
           <div className="bg-white p-4 rounded-lg shadow-lg mb-6" key={job.id}>
@@ -107,7 +103,7 @@ const JobListing = () => {
               </div>
             </div>
 
-            {/* Job role, level, and skills - clickable filters */}
+            
             <div className="flex flex-wrap items-center gap-2 mt-4">
               <span
                 className={`cursor-pointer ${
