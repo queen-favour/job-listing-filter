@@ -4,8 +4,8 @@ import header from "../assets/images/bg-header-mobile.svg";
 import header2 from "../assets/images/bg-header-desktop.svg";
 
 const JobListing = () => {
-  const [selectedFilters, setSelectedFilters] = useState([]); 
-  const [filteredItems, setFilteredItems] = useState(data); 
+  const [selectedFilters, setSelectedFilters] = useState([]);
+  const [filteredItems, setFilteredItems] = useState(data);
 
   const toggleFilter = (filter) => {
     if (selectedFilters.includes(filter)) {
@@ -19,7 +19,7 @@ const JobListing = () => {
   };
   React.useEffect(() => {
     if (selectedFilters.length === 0) {
-      setFilteredItems(data); 
+      setFilteredItems(data);
     } else {
       const updatedJobs = data.filter((job) =>
         selectedFilters.every(
@@ -174,7 +174,6 @@ const JobListing = () => {
             No jobs found matching the criteria.
           </p>
         )}
-      
       </div>
     </div>
   );
