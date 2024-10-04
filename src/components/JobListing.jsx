@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { data } from "../data";
-
+import header from "../assets/images/bg-header-mobile.svg";
 
 const JobListing = () => {
   const [selectedFilters, setSelectedFilters] = useState([]); // Track selected filters
@@ -44,12 +44,14 @@ const JobListing = () => {
 
   return (
     <div
-      className="relative bg-LightGrayishCyan min-h-screen"
-      style={{ backgroundImage: `url('/')`, backgroundSize: 'cover' }}
+      className="relative  bg-LightGrayishCyan min-h-screen"
     >
-      {/* Display selected filters */}
+      <div className="h-40  bg-DesaturatedDarkCyan"      style={{ backgroundImage: `url(${header})`, backgroundSize: "cover" }}
+      ></div>
+      <div className="p-4">
+        {/* Display selected filters */}
       {selectedFilters.length > 0 && (
-        <div className="flex flex-wrap items-center gap-2 mb-4 p-2 bg-white shadow-lg rounded">
+        <div className="flex  flex-wrap items-center gap-2 mb-4 p-2 bg-white shadow-lg rounded">
           {selectedFilters.map((filter, index) => (
             <div
               key={index}
@@ -173,6 +175,9 @@ const JobListing = () => {
           No jobs found matching the criteria.
         </p>
       )}
+      </div>
+
+      
     </div>
   );
 };
