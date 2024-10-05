@@ -50,23 +50,25 @@ const JobListing = () => {
       ></div>
       <div className="p-4 md:px-16">
         {selectedFilters.length > 0 && (
-          <div className="flex  flex-wrap items-center gap-2 mb-4 p-2 bg-white shadow-lg rounded md:justify-between">
-            {selectedFilters.map((filter, index) => (
-              <div
-                key={index}
-                className="flex bg-filterGrayishCyan text-DesaturatedDarkCyan font-semibold px-4 py-2 rounded-lg items-center space-x-2"
-              >
-                <span>{filter}</span>
-                <button
-                  className="bg-DesaturatedDarkCyan text-white font-bold rounded-full px-2 py-1"
-                  onClick={() => toggleFilter(filter)}
+          <div className="flex  flex-wrap items-center gap-2 mb-4 p-2 bg-white shadow-lg rounded ">
+            <div className="flex flex-wrap gap-2">
+              {selectedFilters.map((filter, index) => (
+                <div
+                  key={index}
+                  className="flex bg-filterGrayishCyan text-DesaturatedDarkCyan font-semibold px-4 py-2 rounded-lg items-center space-x-2"
                 >
-                  X
-                </button>
-              </div>
-            ))}
+                  <span>{filter}</span>
+                  <button
+                    className="bg-DesaturatedDarkCyan text-white font-bold rounded-full px-2 py-1"
+                    onClick={() => toggleFilter(filter)}
+                  >
+                    X
+                  </button>
+                </div>
+              ))}
+            </div>
             <button
-              className="text-xl text-DesaturatedDarkCyan font-semibold"
+              className="text-xl ml-auto  text-DesaturatedDarkCyan font-semibold"
               onClick={clearFilters}
             >
               Clear
