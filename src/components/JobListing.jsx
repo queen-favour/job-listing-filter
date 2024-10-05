@@ -45,12 +45,12 @@ const JobListing = () => {
         style={{ backgroundImage: `url(${header})`, backgroundSize: "cover" }}
       ></div>
       <div
-        className="h-40 bg-DesaturatedDarkCyan hidden md:block"
+        className="h-40 bg-DesaturatedDarkCyan hidden lg:block"
         style={{ backgroundImage: `url(${header2})`, backgroundSize: "cover" }}
       ></div>
       <div className="p-4 md:px-16">
         {selectedFilters.length > 0 && (
-          <div className="flex  flex-wrap items-center gap-2 mb-4 p-2 bg-white shadow-lg rounded">
+          <div className="flex  flex-wrap items-center gap-2 mb-4 p-2 bg-white shadow-lg rounded md:justify-between">
             {selectedFilters.map((filter, index) => (
               <div
                 key={index}
@@ -66,7 +66,7 @@ const JobListing = () => {
               </div>
             ))}
             <button
-              className="text-DesaturatedDarkCyan font-semibold"
+              className="text-xl text-DesaturatedDarkCyan font-semibold"
               onClick={clearFilters}
             >
               Clear
@@ -76,20 +76,18 @@ const JobListing = () => {
         {filteredItems.length > 0 ? (
           filteredItems.map((job) => (
             <div
-              className="bg-white p-4 rounded-lg shadow-lg mb-6 relative md:flex justify-between px-10"
+              className="bg-white p-4 py-12 rounded-lg shadow-lg mb-10 relative lg:flex justify-between px-10 lg:p-4 "
               key={job.id}
             >
-              {/* Left Cyan Bar */}
-              <div className="absolute left-0 top-0 bottom-0 w-2 bg-DesaturatedDarkCyan"></div>
-
-              {/* Job header */}
-              <div className="flex items-center md:gap-4 mb-4">
+              <div className="absolute rounded-tl-md rounded-bl-md  left-0 top-0 bottom-0 w-2 bg-DesaturatedDarkCyan"></div>
+              <div className="flex items-center gap-4  md:gap-4 mb-4 relative lg:gap-0">
                 <img
                   src={job.logo}
                   alt={job.company}
-                  className="w-12 h-12 rounded-full border-2 border-gray-300"
+                  className="w-20 h-20 rounded-full border-gray-300 absolute -top-9 left-0 transform -translate-y-1/2 lg:static lg:translate-y-0 lg:top-auto lg:left-auto" // This moves the logo upwards
                 />
-                <div className="flex-1">
+                <div className="flex-1 text-lg pl-16">
+                  {" "}
                   <div className="flex items-center mb-2">
                     <h3 className="text-lg font-bold text-DesaturatedDarkCyan">
                       {job.company}
@@ -115,27 +113,16 @@ const JobListing = () => {
                 </div>
               </div>
 
-              {/* Gray Demarcation Line */}
               <div className="border-b-2 border-gray-300 my-4"></div>
-
-              {/* Job role, level, and skills - clickable filters */}
               <div className="flex flex-wrap items-center gap-2 mt-4">
                 <span
-                  className={`cursor-pointer ${
-                    selectedFilters.includes(job.role)
-                      ? "bg-DesaturatedDarkCyan text-white"
-                      : "bg-teal-200 text-teal-800"
-                  } px-4 py-2 rounded-full`}
+                  className="bg-filterGrayishCyan cursor-pointer hover:bg-DesaturatedDarkCyan hover:text-white text-DesaturatedDarkCyan px-4 py-2 rounded font-bold text-lg"
                   onClick={() => toggleFilter(job.role)}
                 >
                   {job.role}
                 </span>
                 <span
-                  className={`cursor-pointer ${
-                    selectedFilters.includes(job.level)
-                      ? "bg-DesaturatedDarkCyan text-white"
-                      : "bg-teal-200 text-teal-800"
-                  } px-4 py-2 rounded-full`}
+                  className="bg-filterGrayishCyan  cursor-pointer hover:bg-DesaturatedDarkCyan hover:text-white text-DesaturatedDarkCyan px-4 py-2 rounded font-bold text-lg"
                   onClick={() => toggleFilter(job.level)}
                 >
                   {job.level}
@@ -143,11 +130,7 @@ const JobListing = () => {
                 {job.languages.map((language, index) => (
                   <span
                     key={index}
-                    className={`cursor-pointer ${
-                      selectedFilters.includes(language)
-                        ? "bg-DesaturatedDarkCyan text-white"
-                        : "bg-teal-200 text-teal-800"
-                    } px-4 py-2 rounded-full`}
+                    className="bg-filterGrayishCyan cursor-pointer hover:bg-DesaturatedDarkCyan hover:text-white text-DesaturatedDarkCyan px-4 py-2 rounded font-bold text-lg"
                     onClick={() => toggleFilter(language)}
                   >
                     {language}
@@ -156,11 +139,7 @@ const JobListing = () => {
                 {job.tools.map((tool, index) => (
                   <span
                     key={index}
-                    className={`cursor-pointer ${
-                      selectedFilters.includes(tool)
-                        ? "bg-DesaturatedDarkCyan text-white"
-                        : "bg-teal-200 text-teal-800"
-                    } px-4 py-2 rounded-full`}
+                    className="bg-filterGrayishCyan cursor-pointer hover:bg-DesaturatedDarkCyan hover:text-white text-DesaturatedDarkCyan px-4 py-2 rounded font-bold text-lg"
                     onClick={() => toggleFilter(tool)}
                   >
                     {tool}
