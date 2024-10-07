@@ -50,7 +50,7 @@ const JobListing = () => {
         style={{ backgroundImage: `url(${header2})`, backgroundSize: "cover" }}
       ></div>
       {selectedFilters.length > 0 && (
-        <div className="relative z-10 -mt-10 mx-4 md:mx-16 mb-6 p-4 bg-white shadow-xl rounded-lg flex flex-wrap items-center gap-2">
+        <div className=" relative z-10 -mt-10 mx-4 md:mx-16 mb-6 p-4 bg-white shadow-xl rounded-lg flex flex-wrap items-center gap-2">
           <div className="flex flex-wrap gap-2">
             {selectedFilters.map((filter, index) => (
               <div key={index} className="flex">
@@ -79,23 +79,23 @@ const JobListing = () => {
           </button>
         </div>
       )}
-      <div className="p-4 md:px-16">
+      <div className="p-9 md:px-16">
         {filteredItems.length > 0 ? (
           filteredItems.map((job) => (
             <div
-              className="bg-white p-4 py-12 rounded-lg shadow-lg mb-10 relative lg:flex justify-between px-10 lg:p-4"
+              className="bg-white pt-16 p-4 py-12 rounded-lg shadow-lg mb-10 relative lg:flex justify-between px-10 lg:p-4"
               key={job.id}
             >
               <div className="absolute rounded-tl-md rounded-bl-md left-0 top-0 bottom-0 w-2 bg-DesaturatedDarkCyan"></div>
-              <div className="flex items-center gap-4 md:gap-4 mb-4 relative lg:gap-0">
+              <div className="flex items-center  gap-4 mb-4 relative lg:gap-0">
                 <img
                   src={job.logo}
                   alt={job.company}
-                  className="w-20 h-20 rounded-full border-gray-300 absolute -top-9 left-0 transform -translate-y-1/2 lg:static lg:translate-y-0 lg:top-auto lg:left-auto" // This moves the logo upwards
+                  className="w-16 h-16 lg:w-20 lg:h-20 rounded-full border-gray-300 absolute -top-14  left-0 transform -translate-y-1/2 lg:static lg:translate-y-0 lg:top-auto lg:left-auto" // This moves the logo upwards
                 />
-                <div className="flex-1 text-lg pl-16">
+                <div className="flex-1 text-lg lg:pl-6 ">
                   <div className="flex items-center mb-2">
-                    <h3 className="text-lg font-bold text-DesaturatedDarkCyan">
+                    <h3 className="text-xl font-bold text-DesaturatedDarkCyan">
                       {job.company}
                     </h3>
                     {job.new && (
@@ -109,10 +109,10 @@ const JobListing = () => {
                       </span>
                     )}
                   </div>
-                  <h4 className="text-gray-700 font-semibold">
+                  <h4 className="text-gray-700 font-semibold text-lg">
                     {job.position}
                   </h4>
-                  <div className="text-gray-500 text-sm">
+                  <div className="text-gray-500 text-md">
                     <span>{job.postedAt}</span> • <span>{job.contract}</span> •{" "}
                     <span>{job.location}</span>
                   </div>
