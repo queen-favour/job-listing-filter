@@ -86,8 +86,8 @@ const JobListing = () => {
               className="bg-white pt-16 p-4 py-12 rounded-lg shadow-lg mb-10 relative lg:flex justify-between px-10 lg:p-4"
               key={job.id}
             >
-              <div className="absolute rounded-tl-md rounded-bl-md left-0 top-0 bottom-0 w-2 bg-DesaturatedDarkCyan"></div>
-              <div className="flex items-center  gap-4 mb-4 relative lg:gap-0">
+              <div className="absolute rounded-tl-md  rounded-bl-md left-0 top-0 bottom-0 w-2 bg-DesaturatedDarkCyan"></div>
+              <div className="flex items-center gap-4 mb-4 relative lg:gap-0 lg:px-8">
                 <img
                   src={job.logo}
                   alt={job.company}
@@ -109,10 +109,10 @@ const JobListing = () => {
                       </span>
                     )}
                   </div>
-                  <h4 className="text-gray-700 font-semibold text-lg">
+                  <h4 className="text-gray-700 font-bold text-lg">
                     {job.position}
                   </h4>
-                  <div className="text-gray-500 text-md">
+                  <div className="text-gray-500 text-sm font-semibold ">
                     <span>{job.postedAt}</span> • <span>{job.contract}</span> •{" "}
                     <span>{job.location}</span>
                   </div>
