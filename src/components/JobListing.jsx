@@ -93,18 +93,18 @@ const JobListing = () => {
                   alt={job.company}
                   className="w-16 h-16 lg:w-20 lg:h-20 rounded-full border-gray-300 absolute -top-14  left-0 transform -translate-y-1/2 lg:static lg:translate-y-0 lg:top-auto lg:left-auto" // This moves the logo upwards
                 />
-                <div className="flex-1 text-lg lg:pl-6 ">
+                <div className="flex-1 lg:pl-6 ">
                   <div className="flex items-center mb-2">
-                    <h3 className="text-xl font-bold text-DesaturatedDarkCyan">
+                    <h3 className="text-md lg:text-xl font-bold text-DesaturatedDarkCyan">
                       {job.company}
                     </h3>
                     {job.new && (
-                      <span className="bg-teal-500 text-white text-xs font-bold px-2 py-1 ml-2 rounded-full">
+                      <span className="bg-teal-500 text-white text-xs font-bold lg:font-bold px-1 lg:px-2 py-1 ml-2 rounded-full">
                         NEW!
                       </span>
                     )}
                     {job.featured && (
-                      <span className="bg-gray-800 text-white text-xs font-bold px-2 py-1 ml-2 rounded-full">
+                      <span className="bg-gray-800 text-white text-xs font-bold lg:font-bold px-1 lg:px-2 py-1 ml-2 rounded-full">
                         FEATURED
                       </span>
                     )}
